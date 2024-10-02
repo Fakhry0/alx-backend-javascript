@@ -1,4 +1,10 @@
-import handleResponseFromAPI from "./2-then";
-
-const promise = Promise.resolve();
-handleResponseFromAPI(promise);
+function handleResponseFromAPI(promise) {
+  return promise
+    .then(() => ({
+      status: 200,
+      body: 'success',
+    }))
+    .catch(() => Error())
+    .finally(() => console.log('Got a response from the API'));
+}
+export default handleResponseFromAPI;
